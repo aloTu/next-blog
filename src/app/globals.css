@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --text: #2d3748;
+  --background: #fff;
+  --primary: #6b46c1;
+  --primaryHover: #2c5282;
+  --secondary: #5f6c80;
+  --muted: #edf2f7;
+  --success: #9ae6b4;
+  --info: #63b3ed;
+  --warning: #faf089;
+  --danger: #feb2b2;
+  --light: #f7fafc;
+  --dark: #2d3748;
+  --textMuted: #718096;
+  --toggleIcon: #2d3748;
+  --heading: #000;
+  --friend: aliceblue;
+  --friendHover: #ccc;
+  --divide: #cbd5e0;
+  --highlightLineBg: rgba(0, 0, 0, 0.035);
+  --plain-color: #393a34;
+  --plain-backgroundColor: #f6f8fa;
+  --comment-color: #999988;
+  --comment-fontStyle: italic;
+  --prolog-color: #999988;
+  --prolog-fontStyle: italic;
+  --doctype-color: #999988;
+  --doctype-fontStyle: italic;
+  --cdata-color: #999988;
+  --cdata-fontStyle: italic;
+  --namespace-opacity: 0.7;
+  --string-color: #e3116c;
+  --attr-value-color: #e3116c;
+  --punctuation-color: #393a34;
+  --operator-color: #393a34;
+  --entity-color: #36acaa;
+  --url-color: #36acaa;
+  --symbol-color: #36acaa;
+  --number-color: #36acaa;
+  --boolean-color: #36acaa;
+  --variable-color: #36acaa;
+  --constant-color: #36acaa;
+  --property-color: #36acaa;
+  --regex-color: #36acaa;
+  --inserted-color: #36acaa;
+  --atrule-color: #00a4db;
+  --keyword-color: #00009f;
+  --attr-name-color: #00a4db;
+  --selector-color: #00009f;
+  --function-color: #d73a49;
+  --deleted-color: #d73a49;
+  --tag-color: #00009f;
+  --function-variable-color: #6f42c1;
+}
+
+.dark {
+  --friend: #2d2d2d;
+  --friendHover: #000;
+  --text: #cbd5e0;
+  --primary: #b794f4;
+  --secondary: #8a9ab0;
+  --toggleIcon: #cbd5e0;
+  --background: #1a202c;
+  --heading: #ffa7c4;
+  --divide: #2d3748;
+  --muted: #2d3748;
+  --highlightLineBg: rgba(255, 255, 255, 0.1);
+  --plain-color: #9cdcfe;
+  --plain-backgroundColor: #1e1e1e;
+  --prolog-color: rgb(0, 0, 128);
+  --comment-color: rgb(106, 153, 85);
+  --builtin-color: rgb(86, 156, 214);
+  --changed-color: rgb(86, 156, 214);
+  --keyword-color: rgb(86, 156, 214);
+  --interpolation-punctuation-color: rgb(86, 156, 214);
+  --number-color: rgb(181, 206, 168);
+  --inserted-color: rgb(181, 206, 168);
+  --constant-color: rgb(100, 102, 149);
+  --attr-name-color: rgb(156, 220, 254);
+  --variable-color: rgb(156, 220, 254);
+  --deleted-color: rgb(206, 145, 120);
+  --string-color: rgb(206, 145, 120);
+  --attr-value-color: rgb(206, 145, 120);
+  --template-punctuation-color: rgb(206, 145, 120);
+  --selector-color: rgb(215, 186, 125);
+  --tag-color: rgb(86, 156, 214);
+  --punctuation-color: #808080;
+  --operator-color: rgb(212, 212, 212);
+  --function-color: rgb(220, 220, 170);
+  --class-name-color: rgb(78, 201, 176);
+  --char-color: rgb(209, 105, 105);
+}
+
+html {
+  color: var(--text);
+  background-color: var(--background);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-weight: 400;
+  line-height: 1.625;
+  box-sizing: border-box;
+}
