@@ -4,6 +4,7 @@ import Listing from '@/app/ui/listing'
 import { fetchAPI } from '@/lib/api'
 import type { IStrapData } from '@/lib/api'
 import kebabCase from 'lodash.kebabcase'
+import Hero from '@/app/info/hero.mdx'
 
 export default async function Home() {
   const { data } = await fetchAPI<
@@ -32,7 +33,7 @@ export default async function Home() {
   return (
     <main>
       <section className="mb-16 sm:mb-32 md:mb-64">
-        这里主要是我的前端👨 💻学习记录，希望💡对你有所帮助。
+        <Hero />
       </section>
       <Title text="Latest Posts">
         <Link href="/blog" className="hover:underline hover:text-heading">
