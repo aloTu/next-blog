@@ -1,13 +1,13 @@
-import { fetchAPI } from "@/lib/api";
-import type { IStrapData } from "@/lib/api";
+import { fetchAPI } from '@/lib/api'
+import type { IStrapData } from '@/lib/api'
 
 export default async function Friends() {
   const { data } = await fetchAPI<
     IStrapData<{
-      friendLinks: { id: number; title: string; url: string; slogan: string }[];
+      friendLinks: { id: number; title: string; url: string; slogan: string }[]
     }>
-  >("/about?populate[0]=friendLinks");
-  const friends = data.attributes.friendLinks;
+  >('/about?populate[0]=friendLinks')
+  const friends = data.attributes.friendLinks
   return (
     <div className="flex flex-col">
       {friends.map((item) => (
@@ -24,5 +24,5 @@ export default async function Friends() {
         </a>
       ))}
     </div>
-  );
+  )
 }

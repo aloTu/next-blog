@@ -4,7 +4,6 @@ import Listing from '@/app/ui/listing'
 import { fetchAPI } from '@/lib/api'
 import type { IStrapData } from '@/lib/api'
 import kebabCase from 'lodash.kebabcase'
-import Hero from '@/app/info/hero.mdx'
 
 export default async function Home() {
   const { data } = await fetchAPI<
@@ -24,7 +23,7 @@ export default async function Home() {
   })
 
   const posts = data.map((item) => ({
-    slug: kebabCase(item.attributes.title),
+    slug: `/blog/${kebabCase(item.attributes.title)}`,
     title: item.attributes.title,
     date: new Date(item.attributes.updatedAt).toLocaleDateString('zh-cn'),
     description: item.attributes.description,
@@ -33,7 +32,8 @@ export default async function Home() {
   return (
     <main>
       <section className="mb-16 sm:mb-32 md:mb-64">
-        <Hero />
+        <span className="text-[1.875rem]">Hi.</span>
+        这里是的前端💻学习记录，希望对你有所帮助。
       </section>
       <Title text="Latest Posts">
         <Link href="/blog" className="hover:underline hover:text-heading">
