@@ -37,6 +37,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="p-4 sm:p-8  max-w-5xl mx-auto text-base bg-red-500 font-normal leading-relaxed">
         <ThemeProvider>
+          {/* @ts-expect-error Async Server Component */}
           <Header />
           {children}
           <Footer />

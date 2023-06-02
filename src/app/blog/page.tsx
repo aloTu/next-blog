@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Listing from '@/app/ui/listing'
 import kebabCase from 'lodash.kebabcase'
 import { fetchAPI } from '@/lib/api'
+import type { IStrapData } from '@/lib/api'
 
 export const metadata = {
   title: 'Blog',

@@ -1,7 +1,7 @@
 import kebabCase from 'lodash.kebabcase'
 
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import { H1, H2, ResponsiveImage } from '@/app/components'
+import { H1, H2, Text, ResponsiveImage } from '@/app/components'
 
 const components = {
   // img: ResponsiveImage,
@@ -43,7 +43,6 @@ async function getCurrentId(slug: string) {
 
 export default async function Post({ params }: { params: { slug: string } }) {
   const curId = await getCurrentId(params.slug)
-  console.log('hhh')
   const { data } = await fetchAPI<
     IStrapData<{
       title: string
@@ -55,11 +54,10 @@ export default async function Post({ params }: { params: { slug: string } }) {
     }>
   >(`/articles/${curId}`)
   return (
-    // <MDXProvider>
     <main>
+      {/* @ts-expect-error Async Server Component */}
       <MDXRemote source={data.attributes.content} components={components} />
     </main>
-    // </MDXProvider>
   )
 }
 
