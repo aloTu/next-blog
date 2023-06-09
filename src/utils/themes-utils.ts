@@ -31,7 +31,7 @@ type Language =
   | 'html'
   | 'text'
 
-type GetLanguageInput = `language-${Language}` | ''
+export type GetLanguageInput = `language-${Language}` | ''
 
 const getLanguage = (className: GetLanguageInput = ``) =>
   className.split(`language-`).pop() as Language
@@ -98,12 +98,20 @@ const mdxResolverPassthrough =
   }
 /* c8 ignore stop */
 
+const slugify = (
+  source: { slug?: string; title: string },
+  basePath: string
+) => {
+  const slug = source.slug ? source.slug : kebabCase(source.title)
+
+  return `/${basePath}/${slug}`.replace(/\/\/+/g, `/`)
+}
+
 export {
   kebabCase,
   calculateLinesToHighlight,
   getLanguage,
   mdxResolverPassthrough,
   preToCodeBlock,
+  slugify,
 }
-
-export type { GetLanguageInput }

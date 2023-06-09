@@ -31,10 +31,7 @@ export default async function Home() {
 
   return (
     <main>
-      <section className="mb-16 sm:mb-32 md:mb-64">
-        <span className="text-[1.875rem]">Hi.</span>
-        这里是的前端💻学习记录，希望对你有所帮助。
-      </section>
+      <section className="mb-16 sm:mb-32 md:mb-64"></section>
       <Title text="Latest Posts">
         <Link href="/blog" className="hover:underline hover:text-heading">
           Read all posts

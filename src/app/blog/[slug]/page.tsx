@@ -1,16 +1,7 @@
 import kebabCase from 'lodash.kebabcase'
 
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import { H1, H2, Text, ResponsiveImage } from '@/app/components'
-
-const components = {
-  // img: ResponsiveImage,
-  h1: H1,
-  h2: H2,
-  // p: Text,
-  // pre: Pre,
-  // code: InlineCode,
-}
+import MdxComponents from '@/app/components/mdx-component'
 
 import { fetchAPI } from '@/lib/api'
 import type { IStrapData } from '@/lib/api'
@@ -56,7 +47,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
   return (
     <main>
       {/* @ts-expect-error Async Server Component */}
-      <MDXRemote source={data.attributes.content} components={components} />
+      <MDXRemote source={data.attributes.content} components={MdxComponents} />
     </main>
   )
 }
