@@ -16,16 +16,12 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    textColor: {
-      base: `var(${'--text'})`,
+    colors: {
+      text: `var(${'--text'})`,
+      background: `var(${'--background'})`,
       heading: `var(${'--heading'})`,
       secondary: `var(${'--secondary'})`,
-    },
-    backgroundColor: {
-      base: `var(${'--background'})`,
       friend: `var(${'--friend'})`,
-    },
-    colors: {
       friendHover: `var(${'--friendHover'})`,
       primary: `var(${'--primary'})`,
       primaryHover: `var(${'--primaryHover'})`,
@@ -101,7 +97,6 @@ module.exports = {
         base: withOpacityValue('--color-bg-base'),
         nav: withOpacityValue('--color-bg-nav'),
         main: withOpacityValue('--color-fill-main'),
-        muted: withOpacityValue('--color-fill-muted'),
       },
       // 设置渐变颜色基础类
       gradientColorStops: {

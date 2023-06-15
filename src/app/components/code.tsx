@@ -2,12 +2,14 @@
 // import { useColorMode } from 'theme-ui'
 import { Fragment } from 'react'
 import { Highlight } from 'prism-react-renderer'
+import classNames from 'classnames'
 import {
   calculateLinesToHighlight,
   getLanguage,
   GetLanguageInput,
 } from '@/utils/themes-utils'
 import Copy from './copy'
+import './code.css'
 
 type CodeProps = {
   codeString: string
@@ -39,20 +41,19 @@ const Code = ({
   const shouldShowLineNumbers = withLineNumbers || showLineNumbers
 
   return (
-    <Highlight
-      code={codeString}
-      language={language}
-      // theme={isDark ? darkTheme : lightTheme}
-    >
+    <Highlight code={codeString} language={language}>
       {({ className, tokens, getLineProps, getTokenProps }: any) => (
         <Fragment>
-          <div className="gatsby-highlight" data-language={language}>
+          <div className="next-highlight" data-language={language}>
             {title && (
               <div className="code-title">
                 <div>{title}</div>
               </div>
             )}
-            <pre className={className} data-linenumber={shouldShowLineNumbers}>
+            <pre
+              className={classNames(className, 'code-wrap')}
+              data-linenumber={shouldShowLineNumbers}
+            >
               {showCopyButton && <Copy content={codeString} fileName={title} />}
               <code className={`code-content language-${language}`}>
                 {tokens.map((line: any, i: any) => {
@@ -62,7 +63,7 @@ const Code = ({
                     lineProps.className = `${lineProps.className} highlight-line`
                     lineProps.style = {
                       ...lineProps.style,
-                      backgroundColor: `var(--theme-ui-colors-highlightLineBg)`,
+                      backgroundColor: `var(${'--highlightLineBg'})`,
                     }
                   }
 
