@@ -6,7 +6,6 @@ import { fetchAPI } from '@/lib/api'
 import type { IStrapData } from '@/lib/api'
 
 export async function generateMetadata(params: any) {
-  console.log('layout generateMetadata.params', params)
   const { data } = await fetchAPI<
     IStrapData<{
       siteTitle: string

@@ -1,11 +1,12 @@
 import classNames from 'classnames'
 import { Fragment } from 'react'
 import Link from 'next/link'
+import ItemTags from '@/app/ui/item-tags'
 
 type ListingProps = {
   posts: {
     slug: string
-    title: string
+    name: string
     date: string
     description: string
     tags?: {
@@ -28,7 +29,7 @@ const Listing = ({ posts, className = ``, showTags = true }: ListingProps) => (
 type BlogListItemProps = {
   post: {
     slug: string
-    title: string
+    name: string
     date: string
     description: string
     tags?: {
@@ -43,18 +44,17 @@ function BlogListItem({ post, showTags = true }: BlogListItemProps) {
   return (
     <div className="mb-8">
       <Link
-        href={post.slug}
+        href={`/blog/${post.slug}`}
         className="text-[1.25rem] md:text-[1.5rem] hover:underline"
       >
-        {post.title}
+        {post.name}
       </Link>
       <p className="text-secondary mt-1 text-[1rem] md:text-[1.25rem]">
         <time>{post.date}</time>
-        {post.tags && showTags && (
+        {post.tags?.length && showTags && (
           <Fragment>
             {` —— `}
-            {/* <ItemTags tags={post.tags} /> */}
-            post.tags.name
+            <ItemTags tags={post.tags} />
           </Fragment>
         )}
       </p>

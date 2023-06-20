@@ -1,4 +1,25 @@
 import classNames from 'classnames'
+const H1 = (
+  props: React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLHeadingElement>,
+    HTMLHeadingElement
+  >
+) => (
+  // text-rendering: optimizeLegibility;
+  // -webkit-font-smoothing: antialiased;
+  // font-weight: 700;
+  <h1
+    style={{
+      WebkitFontSmoothing: 'antialiased',
+      textRendering: 'optimizeLegibility',
+    }}
+    className={classNames(
+      'mt-8 mb-1 min-w-0 text-heading text-3xl/tight font-bold sm:text-4xl/tight xl:text-5xl/tight',
+      props.className
+    )}
+    {...props}
+  />
+)
 
 const H2 = (
   props: React.DetailedHTMLProps<
@@ -8,6 +29,7 @@ const H2 = (
 ) => (
   <h2
     style={{
+      WebkitFontSmoothing: 'antialiased',
       textRendering: 'optimizeLegibility',
     }}
     className={classNames(
@@ -26,6 +48,7 @@ const H3 = (
 ) => (
   <h3
     style={{
+      WebkitFontSmoothing: 'antialiased',
       textRendering: 'optimizeLegibility',
     }}
     className={classNames(
@@ -44,6 +67,7 @@ const H4 = (
 ) => (
   <h4
     style={{
+      WebkitFontSmoothing: 'antialiased',
       textRendering: 'optimizeLegibility',
     }}
     className={classNames(
@@ -69,4 +93,4 @@ const BlockQuote = (
   />
 )
 
-export { H2, H3, H4, BlockQuote }
+export { H1, H2, H3, H4, BlockQuote }

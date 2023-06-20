@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between mt-32 text-secondary flex-col border-t border-solid border-divide pt-4 md:flex-row">
+    <footer className="flex justify-between mt-32 text-base text-secondary flex-col border-t border-solid border-divide pt-4 md:flex-row">
       <div>&copy; {new Date().getFullYear()} by alo. All rights reserved.</div>
       <div>
         <Link

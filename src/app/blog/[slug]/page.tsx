@@ -1,7 +1,5 @@
-import kebabCase from 'lodash.kebabcase'
-
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import MdxComponents from '@/app/components/mdx-component'
+import MdxComponents from '@/app/mdx-component'
 
 import { fetchAPI } from '@/lib/api'
 import type { IStrapData } from '@/lib/api'
@@ -10,31 +8,8 @@ export const metadata = {
   title: 'Detail',
 }
 
-async function getCurrentId(slug: string) {
-  const { data: list } = await fetchAPI<
-    IStrapData<{
-      title: string
-    }>[]
-  >('/articles', {
-    fields: ['title'],
-    sort: ['updatedAt:desc'],
-    pagination: {
-      start: 0,
-      limit: 10,
-    },
-  })
-  const current = list.find(
-    (item) => slug === encodeURI(kebabCase(item.attributes.title))
-  )
-  if (!current?.id) {
-    throw new Error('获取id失败')
-  }
-  return current.id
-}
-
 export default async function Post({ params }: { params: { slug: string } }) {
-  const curId = await getCurrentId(params.slug)
-  const { data } = await fetchAPI<
+  const { data: query } = await fetchAPI<
     IStrapData<{
       title: string
       description: string
@@ -42,12 +17,20 @@ export default async function Post({ params }: { params: { slug: string } }) {
       createdAt: string
       updatedAt: string
       publishedAt: string
-    }>
-  >(`/articles/${curId}`)
+    }>[]
+  >(`/blogs`, {
+    filters: { slug: { $eqi: params.slug } },
+  })
+
+  if (query.length !== 1) {
+    throw new Error('未查询到数据')
+  }
+  const data = query[0].attributes
+  console.log('hhh', data)
   return (
     <main>
       {/* @ts-expect-error Async Server Component */}
-      <MDXRemote source={data.attributes.content} components={MdxComponents} />
+      <MDXRemote source={data.content} components={MdxComponents} />
     </main>
   )
 }
@@ -55,10 +38,10 @@ export default async function Post({ params }: { params: { slug: string } }) {
 export async function generateStaticParams() {
   const { data } = await fetchAPI<
     IStrapData<{
-      title: string
+      slug: string
     }>[]
-  >('/articles', {
-    fields: ['title'],
+  >('/blogs', {
+    fields: ['slug'],
     sort: ['updatedAt:desc'],
     pagination: {
       start: 0,
@@ -67,6 +50,6 @@ export async function generateStaticParams() {
   })
 
   return data.map((item) => ({
-    slug: kebabCase(item.attributes.title),
+    slug: item.attributes.slug,
   }))
 }

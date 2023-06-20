@@ -3,18 +3,18 @@ import Title from '@/app/ui/title'
 import Listing from '@/app/ui/listing'
 import { fetchAPI } from '@/lib/api'
 import type { IStrapData } from '@/lib/api'
-import kebabCase from 'lodash.kebabcase'
 
 export default async function Home() {
   const { data } = await fetchAPI<
     IStrapData<{
-      title: string
+      name: string
+      slug: string
       description: string
       createdAt: string
       updatedAt: string
     }>[]
-  >('/articles', {
-    fields: ['title', 'description', 'createdAt', 'updatedAt'],
+  >('/blogs', {
+    fields: ['name', 'slug', 'description', 'createdAt', 'updatedAt'],
     sort: ['updatedAt:desc'],
     pagination: {
       start: 0,
@@ -23,17 +23,25 @@ export default async function Home() {
   })
 
   const posts = data.map((item) => ({
-    slug: `/blog/${kebabCase(item.attributes.title)}`,
-    title: item.attributes.title,
+    slug: item.attributes.slug,
+    name: item.attributes.name,
     date: new Date(item.attributes.updatedAt).toLocaleDateString('zh-cn'),
     description: item.attributes.description,
   }))
 
   return (
     <main>
-      <section className="mb-16 sm:mb-32 md:mb-64"></section>
+      <section className="mb-16 sm:mb-32 md:mb-64">
+        <span className="m-0 min-w-0 text-heading font-bold text-5xl/relaxed">
+          Hi.
+        </span>
+        这里做些学习总结记录
+      </section>
       <Title text="Latest Posts">
-        <Link href="/blog" className="hover:underline hover:text-heading">
+        <Link
+          href="/blog"
+          className="text-base hover:underline hover:text-heading"
+        >
           Read all posts
         </Link>
       </Title>

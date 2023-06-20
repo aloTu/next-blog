@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import Listing from '@/app/ui/listing'
-import kebabCase from 'lodash.kebabcase'
 import { fetchAPI } from '@/lib/api'
 import type { IStrapData } from '@/lib/api'
 
@@ -11,13 +10,14 @@ export const metadata = {
 export default async function Blog() {
   const { data } = await fetchAPI<
     IStrapData<{
-      title: string
+      name: string
+      slug: string
       description: string
       createdAt: string
       updatedAt: string
     }>[]
-  >('/articles', {
-    fields: ['title', 'description', 'createdAt', 'updatedAt'],
+  >('/blogs', {
+    fields: ['name', 'slug', 'description', 'createdAt', 'updatedAt'],
     sort: ['updatedAt:desc'],
     pagination: {
       start: 0,
@@ -26,8 +26,8 @@ export default async function Blog() {
   })
 
   const posts = data.map((item) => ({
-    slug: `/blog/${kebabCase(item.attributes.title)}`,
-    title: item.attributes.title,
+    slug: item.attributes.slug,
+    name: item.attributes.name,
     date: new Date(item.attributes.updatedAt).toLocaleDateString('zh-cn'),
     description: item.attributes.description,
   }))
@@ -39,7 +39,7 @@ export default async function Blog() {
           Blog
         </h1>
         <Link
-          className="text-secondary hover:underline hover:text-heading"
+          className="text-secondary text-base hover:underline hover:text-heading"
           href="/tags"
         >
           View all tags
