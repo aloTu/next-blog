@@ -1,5 +1,3 @@
-import kebabCase from 'lodash.kebabcase'
-
 type Language =
   | 'bash'
   | 'sh'
@@ -98,20 +96,10 @@ const mdxResolverPassthrough =
   }
 /* c8 ignore stop */
 
-const slugify = (
-  source: { slug?: string; title: string },
-  basePath: string
-) => {
-  const slug = source.slug ? source.slug : kebabCase(source.title)
-
-  return `/${basePath}/${slug}`.replace(/\/\/+/g, `/`)
-}
 
 export {
-  kebabCase,
   calculateLinesToHighlight,
   getLanguage,
   mdxResolverPassthrough,
   preToCodeBlock,
-  slugify,
 }
