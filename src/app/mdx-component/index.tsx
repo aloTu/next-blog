@@ -1,12 +1,13 @@
 import * as React from 'react'
 import { preToCodeBlock } from '@/utils/themes-utils'
 import Code from './code'
-import { H2, H3, H4, BlockQuote } from './heading'
+import Image from 'next/image'
+import { H2, H3, BlockQuote } from './heading'
 
 const MdxComponents = {
   img: (props: any) => (
     <span className="w-full flex justify-center my-16">
-      <img sizes="100vw" {...props} />
+      <Image alt={props?.alt} {...props} />
     </span>
   ),
   h2: (props: any) => <H2 {...props} />,

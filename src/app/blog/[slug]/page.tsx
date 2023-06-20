@@ -26,7 +26,6 @@ export default async function Post({ params }: { params: { slug: string } }) {
     throw new Error('未查询到数据')
   }
   const data = query[0].attributes
-  console.log('hhh', data)
   return (
     <main>
       {/* @ts-expect-error Async Server Component */}
