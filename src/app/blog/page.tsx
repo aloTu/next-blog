@@ -19,10 +19,6 @@ export default async function Blog() {
   >('/blogs', {
     fields: ['name', 'slug', 'description', 'createdAt', 'updatedAt'],
     sort: ['updatedAt:desc'],
-    pagination: {
-      start: 0,
-      limit: 10,
-    },
   })
 
   const posts = data.map((item) => ({

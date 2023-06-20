@@ -4,8 +4,29 @@ import MdxComponents from '@/app/mdx-component'
 import { fetchAPI } from '@/lib/api'
 import type { IStrapData } from '@/lib/api'
 
-export const metadata = {
-  title: 'Detail',
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string }
+}) {
+  const { data: query } = await fetchAPI<
+    IStrapData<{
+      title: string
+      description: string
+      content: string
+      createdAt: string
+      updatedAt: string
+      publishedAt: string
+    }>[]
+  >(`/blogs`, {
+    filters: { slug: { $eqi: params.slug } },
+  })
+  const data = query[0].attributes
+
+  return {
+    title: data.title,
+    description: data.description,
+  }
 }
 
 export default async function Post({ params }: { params: { slug: string } }) {
@@ -42,10 +63,6 @@ export async function generateStaticParams() {
   >('/blogs', {
     fields: ['slug'],
     sort: ['updatedAt:desc'],
-    pagination: {
-      start: 0,
-      limit: 10,
-    },
   })
 
   return data.map((item) => ({
