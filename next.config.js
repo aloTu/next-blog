@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  images: {
+    domains: ['image.alo2.ink'],
+  },
   experimental: {
     mdxRs: true,
   },
