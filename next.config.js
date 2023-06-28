@@ -2,7 +2,7 @@
 const nextConfig = {
   output: 'standalone',
   images: {
-    domains: ['image.alo2.ink'],
+    remotePatterns: [{ protocol: 'https', hostname: 'image.alo2.ink' }],
   },
   experimental: {
     mdxRs: true,

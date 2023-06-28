@@ -6,8 +6,14 @@ import { H2, H3, BlockQuote } from './heading'
 
 const MdxComponents = {
   img: (props: any) => (
-    <span className="w-full flex justify-center my-16">
-      <Image alt={props?.alt} {...props} />
+    <span className="w-full flex justify-center my-16 relative h-96">
+      <Image
+        className="object-contain"
+        {...props}
+        src={props?.src}
+        alt={props?.alt}
+        fill={true}
+      />
     </span>
   ),
   h2: (props: any) => <H2 {...props} />,
