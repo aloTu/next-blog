@@ -5,7 +5,7 @@ import Footer from '@/app/ui/footer'
 import { fetchAPI } from '@/lib/api'
 import type { IStrapData } from '@/lib/api'
 
-export async function generateMetadata(params: any) {
+export async function generateMetadata() {
   const { data } = await fetchAPI<
     IStrapData<{
       siteTitle: string
@@ -34,6 +34,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <link rel="icon" href="/favicon.png" sizes="32x32" />
       <body className="p-4 sm:p-8  max-w-5xl mx-auto text-text bg-red-500 font-normal text-base/relaxed md:text-xl/relaxed">
         <ThemeProvider>
           {/* @ts-expect-error Async Server Component */}
