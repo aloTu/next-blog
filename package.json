@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@lekoarts/rehype-meta-as-attributes": "^3.0.0",
     "@next/mdx": "^13.4.4",
     "@types/node": "20.1.0",
     "@types/react": "18.2.5",

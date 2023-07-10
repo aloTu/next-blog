@@ -57,7 +57,7 @@ const Code = ({
               {showCopyButton && <Copy content={codeString} fileName={title} />}
               <code className={`code-content language-${language}`}>
                 {tokens.map((line: any, i: any) => {
-                  const lineProps = getLineProps({ line, key: i })
+                  const { key, ...lineProps } = getLineProps({ line, key: i })
 
                   if (shouldHighlightLine(i)) {
                     lineProps.className = `${lineProps.className} highlight-line`
@@ -68,13 +68,18 @@ const Code = ({
                   }
 
                   return (
-                    <div {...lineProps} key={i}>
+                    <div key={key} {...lineProps}>
                       {shouldShowLineNumbers && (
                         <span className="line-number-style">{i + 1}</span>
                       )}
-                      {line.map((token: any, key: any) => (
-                        <span key={key} {...getTokenProps({ token, key })} />
-                      ))}
+                      {line.map((token: any, index: number) => {
+                        return (
+                          <span
+                            key={key + index}
+                            {...getTokenProps({ token, index })}
+                          />
+                        )
+                      })}
                     </div>
                   )
                 })}

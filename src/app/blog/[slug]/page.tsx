@@ -1,4 +1,5 @@
-import { MDXRemote } from 'next-mdx-remote/rsc'
+import { compileMDX } from 'next-mdx-remote/rsc'
+import rehypeMetaAsAttributes from '@lekoarts/rehype-meta-as-attributes'
 import MdxComponents from '@/app/mdx-component'
 
 import { fetchAPI } from '@/lib/api'
@@ -47,12 +48,21 @@ export default async function Post({ params }: { params: { slug: string } }) {
     throw new Error('未查询到数据')
   }
   const data = query[0].attributes
-  return (
-    <main>
-      {/* @ts-expect-error Async Server Component */}
-      <MDXRemote source={data.content} components={MdxComponents} />
-    </main>
-  )
+  const { content, frontmatter } = await compileMDX<{}>({
+    source: data.content,
+    options: {
+      parseFrontmatter: true,
+      mdxOptions: {
+        remarkPlugins: [],
+        rehypePlugins: [rehypeMetaAsAttributes],
+        format: 'mdx',
+      },
+    },
+    components: MdxComponents,
+  })
+  // {/* @ts-expect-error Async Server Component */}
+  // <MDXRemote source={...source} components={MdxComponents} />
+  return <main>{content}</main>
 }
 
 export async function generateStaticParams() {

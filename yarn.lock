@@ -102,6 +102,13 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
+"@lekoarts/rehype-meta-as-attributes@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@lekoarts/rehype-meta-as-attributes/-/rehype-meta-as-attributes-3.0.0.tgz#30a5e144d1c8fc946874e59726c3efb94236a74c"
+  integrity sha512-Yx7IKQHOBXdpOcM09NjtRzLyr/jCA44VYjs2qwFEY30mJs0mUwcgAs3xXDDvcrWXfXD/I5N3AHvKXhLkPyIpqw==
+  dependencies:
+    unist-util-visit "^4.1.2"
+
 "@mdx-js/mdx@^2.2.1":
   version "2.3.0"
   resolved "https://registry.npmjs.org/@mdx-js/mdx/-/mdx-2.3.0.tgz#d65d8c3c28f3f46bb0e7cb3bf7613b39980671a9"
@@ -3341,9 +3348,9 @@ unist-util-visit-parents@^5.1.1:
     "@types/unist" "^2.0.0"
     unist-util-is "^5.0.0"
 
-unist-util-visit@^4.0.0:
+unist-util-visit@^4.0.0, unist-util-visit@^4.1.2:
   version "4.1.2"
-  resolved "https://registry.npmjs.org/unist-util-visit/-/unist-util-visit-4.1.2.tgz#125a42d1eb876283715a3cb5cceaa531828c72e2"
+  resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-4.1.2.tgz#125a42d1eb876283715a3cb5cceaa531828c72e2"
   integrity sha512-MSd8OUGISqHdVvfY9TPhyK2VdUrPgxkUtWSuMHF6XAAFuL4LokseigBnZtPnJMu+FbynTkFNnFlyjxpVKujMRg==
   dependencies:
     "@types/unist" "^2.0.0"

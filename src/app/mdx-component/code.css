@@ -186,10 +186,11 @@
   position: relative;
 }
 .code-title {
-  background-color: muted;
-  color: text;
-  font-size: 1;
-  paddding: 0.6rem 1rem;
+  background: var(--muted);
+  color: var(--text);
+  display: block;
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
   font-family: body;
 }
 .token-line {
