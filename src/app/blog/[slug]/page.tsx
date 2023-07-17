@@ -1,5 +1,6 @@
 import { compileMDX } from 'next-mdx-remote/rsc'
-import rehypeMetaAsAttributes from '@lekoarts/rehype-meta-as-attributes'
+import rehypeMetaAsAttributes from '@/utils/rehype-meta-as-attributes'
+
 import MdxComponents from '@/app/mdx-component'
 
 import { fetchAPI } from '@/lib/api'
