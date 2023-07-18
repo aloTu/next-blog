@@ -1,7 +1,6 @@
 'use client'
-// import { useColorMode } from 'theme-ui'
-import { Fragment } from 'react'
-import { Highlight } from 'prism-react-renderer'
+import { Fragment, useContext } from 'react'
+import { Highlight, themes } from 'prism-react-renderer'
 import classNames from 'classnames'
 import {
   calculateLinesToHighlight,
@@ -10,6 +9,7 @@ import {
 } from '@/utils/themes-utils'
 import Copy from './copy'
 import './code.css'
+import { ThemeContext } from '@/app/theme-provider'
 
 type CodeProps = {
   codeString: string
@@ -32,16 +32,19 @@ const Code = ({
   highlight = ``,
 }: CodeProps) => {
   const { showLineNumbers, showCopyButton } = config
-  // const [colorMode] = useColorMode<'light' | 'dark'>()
-  const colorMode = 'dark'
-  const isDark = colorMode === `dark`
+  const { mode } = useContext(ThemeContext)
+  const isDark = mode === 'dark'
 
   const language = getLanguage(blockClassName)
   const shouldHighlightLine = calculateLinesToHighlight(highlight)
   const shouldShowLineNumbers = withLineNumbers || showLineNumbers
 
   return (
-    <Highlight code={codeString} language={language}>
+    <Highlight
+      code={codeString}
+      language={language}
+      theme={isDark ? themes.vsDark : themes.palenight}
+    >
       {({ className, tokens, getLineProps, getTokenProps }: any) => (
         <Fragment>
           <div className="next-highlight" data-language={language}>

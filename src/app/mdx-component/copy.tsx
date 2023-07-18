@@ -32,7 +32,7 @@ const Copy = ({
       type="button"
       name={label}
       disabled={copied}
-      className="bg-background border-none text-base cursor-pointer text-sm absolute right-0 py-1 px-3 tracking-wide rounded-br"
+      className="bg-background border-none cursor-pointer text-sm absolute right-0 py-1 px-3 tracking-wide rounded-br hover:bg-primary hover:text-light"
       onClick={async () => {
         await copyToClipboard(trim ? content.trim() : content)
         setCopied(true)

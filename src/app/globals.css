@@ -105,3 +105,26 @@ html {
   line-height: 1.625;
   box-sizing: border-box;
 }
+
+html pre::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+html pre::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+html pre::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+}
+
+body::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+body::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 2px;
+}

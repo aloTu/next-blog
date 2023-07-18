@@ -32,7 +32,6 @@ module.exports = {
       danger: `var(${'--danger'})`,
       light: `var(${'--light'})`,
       dark: `var(${'--dark'})`,
-      textMuted: `var(${'--textMuted'})`,
       toggleIcon: `var(${'--toggleIcon'})`,
       divide: `var(${'--divide'})`,
       highlightLineBg: `var(${'--highlightLineBg'})`,
