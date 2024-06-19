@@ -57,7 +57,7 @@
   --function-variable-color: #6f42c1;
 }
 
-.dark {
+html[data-mode='dark'] {
   --friend: #2d2d2d;
   --friendHover: #000;
   --text: #cbd5e0;
@@ -110,9 +110,11 @@ html pre::-webkit-scrollbar {
   width: 0.5rem;
   height: 0.5rem;
 }
+
 html pre::-webkit-scrollbar-track {
   background: var(--muted);
 }
+
 html pre::-webkit-scrollbar-thumb {
   background-color: var(--primary);
 }
@@ -121,9 +123,11 @@ body::-webkit-scrollbar {
   width: 0.5rem;
   height: 0.5rem;
 }
+
 body::-webkit-scrollbar-track {
   background: var(--muted);
 }
+
 body::-webkit-scrollbar-thumb {
   background-color: var(--primary);
   border-radius: 2px;

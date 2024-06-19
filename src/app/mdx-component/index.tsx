@@ -3,8 +3,9 @@ import { preToCodeBlock } from '@/utils/themes-utils'
 import Code from './code'
 import Image from 'next/image'
 import { H2, H3, BlockQuote } from './heading'
+import type { MDXComponents } from 'mdx/types'
 
-const MdxComponents = {
+const MdxComponents: MDXComponents = {
   img: (props: any) => (
     <span className="w-full flex justify-center my-16 relative h-96">
       <Image

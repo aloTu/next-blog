@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect, useLayoutEffect } from 'react'
 
 const localKey = 'theme'
 
@@ -53,10 +53,10 @@ export default function ThemeProvider({
   }, [])
 
   const switchModeHandler = (value: string) => {
-    const doc = document.querySelector('html')
+    const doc = document.firstElementChild
+
     if (doc) {
-      doc.removeAttribute('class')
-      doc.classList.add(value)
+      doc.setAttribute('data-mode', value)
       setStorage(value)
       setMode(value)
     }
